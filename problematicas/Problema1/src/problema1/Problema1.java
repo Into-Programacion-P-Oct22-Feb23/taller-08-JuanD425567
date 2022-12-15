@@ -14,53 +14,49 @@ public class Problema1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
-        
-        String nombre = "";
-        String posicion = "";
-        int cantidad;
-        int edad=0;
-        double estatura=0;
-        double promedio_estatura;
-        double promedio_edad;
-        int suma1=0;
-        double suma2=0;
-        String mensaje2="";
-        String mensaje;
-        int contador;
-        contador= 0;
-        mensaje = "";
-        System.out.println("Ingrese la cantidad de veces que añadira jugadores");
-        cantidad = entrada.nextInt();
-        
-        while (contador < cantidad) {
-            System.out.println("Ingrese nombre del jugador");
-            nombre = entrada.nextLine();
+        int num;
+        String nombre;
+        String posicion;
+        int edad;
+        double estatura;
+        String mensaje = "";
+        String listaedades = "";
+        double sumaedades = 0;
+        double promedioedades = 0;
+        double sumaestatura = 0;
+        double promedioestatura = 0;
+
+        System.out.println("Ingrese el número de veces que se van a ingresar "
+                + "datos:");
+        num = entrada.nextInt();
+
+        for (int indice = 1; indice <= num; indice++) {
+            System.out.println("Ingrese el nombre del jugador:");
             entrada.nextLine();
-            System.out.println("Ingrese la posicion del campo");
+            nombre = entrada.nextLine();
+            System.out.println("Ingrese la posición en el campo de juego:");
             posicion = entrada.nextLine();
-            System.out.println("Ingreses la edad del jugador");
+            System.out.println("Ingrese la edad del jugador:");
             edad = entrada.nextInt();
-            System.out.println("Ingrese la altura del jugador");
+            System.out.println("Ingrese la estatura del jugador:");
             estatura = entrada.nextDouble();
-            suma1= suma1+edad;
-            suma2= suma2+estatura;
-            mensaje2= mensaje2+edad+"\n";
-            contador=contador+1;
-            mensaje= mensaje+contador+". "+nombre+" -"+posicion+"-,"+"edad "+edad+","
-                    +"estatura "+estatura+"\n";     
+
+            listaedades = listaedades + " " + edad;
+            sumaedades = sumaedades + edad;
+            promedioedades = sumaedades / num;
+            sumaestatura = sumaestatura + estatura;
+            promedioestatura = sumaestatura / num;
+            mensaje = String.format("%s%d. %s -%s-,edad "
+                    + "%d, estatura %.2f\n", mensaje, indice, nombre,
+                    posicion, edad, estatura);
         }
-        promedio_edad= suma1/cantidad;
-        promedio_estatura= suma2/cantidad;
-        mensaje=mensaje+"promedio de edad "+promedio_edad+"\n"+"promedio de "
-                + "estatura "+promedio_estatura+"\n";
-        System.out.println(mensaje);
-        System.out.println("Listado de edades");
-        System.out.println(mensaje2);
-       
-                
-               
+        System.out.printf("\nListado de jugadores\n%sListado de edades %s\n"
+                + "Promedio de edades: %.2f\nPromedio de estaturas: %.2f\n",
+                mensaje, listaedades, promedioedades, promedioestatura);
+
     }
 
 }

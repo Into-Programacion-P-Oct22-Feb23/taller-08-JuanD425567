@@ -21,18 +21,18 @@ public class Problema2 {
         int mult2;
         int mult3;
         int mult4;
-        int contador = 0;
+        int contador;
         String mensaje = "";
         mult2 = num * 2;
         mult3 = num * 3;
         mult4 = num * 4;
-        while (contador < 25) {
+        for (contador=0; contador < 25; contador++) {
             mult2 = mult2 - x2;
             mult3 = mult3 - x3;
             mult4 = mult4 - x4;
             num = num - 1;
             mensaje = mensaje + num + "\t" + mult2 + "\t" + mult3 + "\t" + mult4 + "\n";
-            contador = contador + 1;
+            
         }
         System.out.println("N°" + "\t" + "x2" + "\t" + "x3" + "\t" + "x4");
         System.out.println(mensaje);
